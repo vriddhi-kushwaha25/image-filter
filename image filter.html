@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>image filter using javascript</title>
+</head>
+<body>
+  <img src = "https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616__480.jpg" height = "400"></img><br>
+  <label>Blur</label>
+  <input type="range" min="0" max="100" value="0" step="1" onchange="applyFilter()" data-filter="blur" data-scale="px"></input><br></br>
+  <label>Brightness</label>
+  <input type="range" min="0" max="200" value="100" step="2" onchange="applyFilter()" data-filter="brightness" data-scale="%"></input><br></br>
+  <label>Contrast</label>
+  <input type="range" min="0" max="200" value="100" step="3" onchange="applyFilter()" data-filter="contrast" data-scale="%"></input><br></br>
+  <label>Grayscale</label>
+  <input type="range" min="0" max="100" value="0" step="4"  onchange="applyFilter()" data-filter="grayscale" data-scale="%"></input><br></br>
+  <label>Hue Rotate</label>
+  <input type="range" min="0" max="360" value="0" step="5"  onchange="applyFilter()" data-filter="hue-rotate" data-scale="deg"></input><br></br>
+  <label>Opacity</label>
+  <input type="range" min="0" max="100" value="100" step="7"  onchange="applyFilter()" data-filter="opacity" data-scale="%"></input><br></br>
+  <label>Saturation</label>
+  <input type="range" min="1" max="100" value="1" step="8"  onchange="applyFilter()" data-filter="saturate" data-scale=""></input><br></br>
+  <label>Sepia</label>
+  <input type="range" min="0" max="100" value="0" step="9"  onchange="applyFilter()" data-filter="sepia" data-scale="%"></input><br></br>
+
+<script type = "text/javascript">
+    var image= document.querySelector('img');
+    var filterControls = document.querySelectorAll('input[type=range]');
+    function applyFilter() {
+        var computedFilters = '' ;
+        filterControls.forEach(function(item , index) {
+            computedFilters += item.getAttribute('data-filter') + '(' + item.value + item.getAttribute('data-scale') + ')' 
+         });
+        image.style.filter = computedFilters ;
+    };
+</script>
+</body>
+</html>
